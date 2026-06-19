@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+cardwise:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: 604800000
+  ai:
+    provider: deepseek
+    providers:
+      deepseek:
+        api-url: ${AI_API_URL:https://api.deepseek.com}
+        api-key: ${AI_API_KEY}
+        model: deepseek-chat
